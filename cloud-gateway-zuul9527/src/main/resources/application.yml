@@ -1,0 +1,30 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-gateway-zuul
+
+zuul:
+  prefix: /abc #添加前缀
+  routes:
+    message:
+      path: /payment/**
+      serviceId: CLOUD-PAYMENT-SERVICE #http://localhost:9527/payment/payment/lb
+#service-id为要路由的服务指定一个Ribbon客户端，并设置Ribbon禁用Eureka 达到负载均衡
+ribbon:
+  eureka:
+    enabled: false
+
+CLOUD-PAYMENT-SERVICE:
+  ribbon:
+    listOfServers: http://localhost:8001/,http://localhost:8002/
+
+eureka:
+  instance:
+    hostname: cloud-zuul-service
+  client:
+    service-url:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://eureka7001.com:7001/eureka
