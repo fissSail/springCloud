@@ -8,9 +8,24 @@ spring:
       server:
         git:
           uri: git@github.com:fissSail/sprincloud-config.git
+          #搜索目录
           search-paths:
             - sprincloud-config
+      #分支
       label: master
+  rabbitmq:
+    host: 192.168.213.182
+    port: 9001
+    username: yff
+    password: 123456
+
+#暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
+
 eureka:
   client:
     service-url:
