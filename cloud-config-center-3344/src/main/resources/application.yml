@@ -15,7 +15,7 @@ spring:
       label: master
   rabbitmq:
     host: 192.168.213.182
-    port: 9001
+    port: 5672
     username: yff
     password: 123456
 
