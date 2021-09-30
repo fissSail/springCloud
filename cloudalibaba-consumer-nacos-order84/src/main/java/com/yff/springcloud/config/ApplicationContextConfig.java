@@ -7,18 +7,18 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @author yanfeifan
- * @Package com.com.yff.springcloud.config
+ * @Package com.yff.springcloud.config
  * @Description
- * @date 2021/8/27 11:32
+ * @date 2021/9/29 15:01
  */
 
 @Configuration
-public class ApplicationContextConfig {
-
+public class ApplicationContextConfig
+{
     @Bean
     @LoadBalanced
-    public RestTemplate getRestTemplate(){
+    public RestTemplate getRestTemplate()
+    {
         return new RestTemplate();
     }
-
 }

@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author yanfeifan
  * @Package com.yff.springcloud.lb.impl
- * @Description
+ * @Description 自定义轮询负载均衡
  * @date 2021/9/14 16:13
  */
 @Component
