@@ -1,0 +1,38 @@
+server:
+  port: 2001
+
+spring:
+  application:
+    name: seata-order-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/seata_order?serverTimezone=GMT&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group
+        service:
+          vgroupMapping:
+            my_test_tx_group: default
+          disable-global-transaction: false
+        client:
+          rm:
+            report-success-enable: false
+        enabled: true
+
+feign:
+  hystrix:
+    enabled: false
+
+logging:
+  level:
+    io:
+      seata: info
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  #设置别名用于mapper中传递参数不用写全类名
+  type-aliases-package: com.yff.springcloud.entity
