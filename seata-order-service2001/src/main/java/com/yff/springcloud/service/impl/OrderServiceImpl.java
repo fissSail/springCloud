@@ -42,13 +42,13 @@ public class OrderServiceImpl implements OrderService {
 
         //扣减库存
         log.info("----->订单微服务开始调用库存，做扣减Count");
-        CommonResult storageCommonResult = storageService.decrease(order.getProductId(), order.getCount());
-        log.info("----->订单微服务开始调用库存，做扣减end" + storageCommonResult);
+        storageService.decrease(order.getProductId(), order.getCount());
+        log.info("----->订单微服务开始调用库存，做扣减end");
 
         //扣减账户
         log.info("----->订单微服务开始调用账户，做扣减Money");
-        CommonResult accountCommonResult = accountService.decrease(order.getUserId(), order.getMoney());
-        log.info("----->订单微服务开始调用账户，做扣减end" + accountCommonResult);
+        accountService.decrease(order.getUserId(), order.getMoney());
+        log.info("----->订单微服务开始调用账户，做扣减end" );
 
         //修改订单状态，从零到1代表已经完成
         log.info("----->修改订单状态开始");
